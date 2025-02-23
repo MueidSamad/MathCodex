@@ -1,0 +1,92 @@
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\title{An Introduction to Manifolds}
+\author{Mueid Samad}
+\date{\today}
+
+% Theorem Environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document provides a rigorous introduction to the theory of manifolds aimed at a graduate-level reader. We define topological and differentiable manifolds, discuss charts and atlases, present classical examples, and state a fundamental result regarding partitions of unity.
+\end{abstract}
+
+\section{Introduction}
+Manifolds are central objects in modern geometry and analysis. They generalize the notion of Euclidean space in a way that allows local computations to extend to global results. This exposition provides rigorous definitions and examples, setting the stage for further study in differential geometry and topology.
+
+\section{Topological Manifolds}
+\begin{definition}
+Let $n\in\mathbb{N}$. A topological space $M$ is called an \emph{$n$-dimensional topological manifold} if:
+\begin{enumerate}
+    \item $M$ is Hausdorff,
+    \item $M$ is second-countable, and
+    \item For every $p\in M$, there exists an open neighborhood $U\subset M$ of $p$ and a homeomorphism 
+    \[
+    \varphi: U \to V,
+    \]
+    where $V$ is an open subset of $\mathbb{R}^n$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+The Euclidean space $\mathbb{R}^n$ is an $n$-dimensional manifold since the identity map is a homeomorphism from any open subset of $\mathbb{R}^n$ onto itself.
+\end{example}
+
+\section{Differentiable Manifolds}
+\begin{definition}
+Let $M$ be an $n$-dimensional topological manifold. A \emph{chart} on $M$ is a pair $(U,\varphi)$ where $U\subset M$ is open and $\varphi: U \to \varphi(U)\subset\mathbb{R}^n$ is a homeomorphism. An \emph{atlas} $\mathcal{A}=\{(U_\alpha,\varphi_\alpha)\}_{\alpha\in A}$ is a collection of charts that cover $M$, i.e., 
+\[
+M=\bigcup_{\alpha\in A} U_\alpha.
+\]
+If for any two charts $(U,\varphi)$ and $(V,\psi)$ in $\mathcal{A}$ with $U\cap V\neq\varnothing$, the transition map 
+\[
+\psi\circ\varphi^{-1} : \varphi(U\cap V) \to \psi(U\cap V)
+\]
+is $C^k$ (for some $k\ge 1$, or smooth if $k=\infty$), then $\mathcal{A}$ is said to be a \emph{$C^k$-atlas}. A \emph{$C^k$-differentiable manifold} is a topological manifold together with a maximal $C^k$-atlas.
+\end{definition}
+
+\begin{example}
+The $n$-sphere 
+\[
+S^n = \{ x\in\mathbb{R}^{n+1} : \|x\|=1 \}
+\]
+is a smooth manifold. An atlas for $S^n$ may be constructed via stereographic projection from the north and south poles.
+\end{example}
+
+\section{Partition of Unity}
+One of the most important tools in the study of differentiable manifolds is the existence of a partition of unity subordinate to any open cover.
+
+\begin{theorem}[Partition of Unity]
+Let $M$ be a smooth manifold and let $\{U_\alpha\}_{\alpha\in A}$ be an open cover of $M$. Then there exists a collection of smooth functions $\{\phi_\alpha\}_{\alpha\in A}$ on $M$ such that:
+\begin{enumerate}
+    \item $0\le \phi_\alpha\le 1$ for all $\alpha\in A$,
+    \item $\operatorname{supp}(\phi_\alpha)\subset U_\alpha$ for each $\alpha\in A$,
+    \item For each $p\in M$, there is a neighborhood of $p$ in which only finitely many $\phi_\alpha$ are nonzero, and
+    \item For all $p\in M$, 
+    \[
+    \sum_{\alpha\in A} \phi_\alpha(p)=1.
+    \]
+\end{enumerate}
+\end{theorem}
+
+This result is fundamental in extending local constructions (such as local definitions of differential forms) to global ones on the manifold.
+
+\section{Conclusion}
+In this exposition, we have provided rigorous definitions of both topological and differentiable manifolds along with key examples and a fundamental theorem on partitions of unity. These concepts form the backbone of modern differential geometry and are essential for further study in areas such as Riemannian geometry, algebraic topology, and mathematical physics.
+
+\end{document}
